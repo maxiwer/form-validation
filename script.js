@@ -16,15 +16,27 @@ function getIds(arr) {
     }
 }
 
+// change the style of form if input isn't OK
 function showError(el, message) {
     const formCtrl = el.parentElement;
     formCtrl.className = 'form-control error';
     formCtrl.querySelector('small').innerText = message;
 }
 
+// change the style of form if input is OK
 function showSuccess(el) {
     const formCtrl = el.parentElement;
     formCtrl.className = 'form-control success';
+}
+
+function requiredMessage(field) {
+    return field.id[0].toUpperCase() + field.id.slice(1) + ' is required';
+}
+
+function checkIfRequired(fieldsArr) {
+    fieldsArr.forEach(field => {
+        !field.value.trim() ? showError(field, requiredMessage(field)) : showSuccess(field);
+    })
 }
 
 function isEmailValid(email) {
@@ -34,16 +46,5 @@ function isEmailValid(email) {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    username.value ? showSuccess(username) : showError(username, 'Username is required');
-    // email checking
-    if (email.value === '') {
-        showError(email, 'Email is required');
-    } else if (!isEmailValid(email.value)) {
-        showError(email, 'Email is required');
-    } else {
-        showSuccess(email);
-    }
-    password.value ? showSuccess(password) : showError(password, 'Password is required');
-    password2.value ? showSuccess(password2) : showError(password2, 'Second password is required');
+    checkIfRequired([username, email, password, password2]);
 });
