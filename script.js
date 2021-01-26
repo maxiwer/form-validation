@@ -10,10 +10,6 @@ document.onload = () => {
     loadSvgs();
 }
 
-document.onload = () => {
-    document.getElementsByClassName
-}
-
 const ids = ['form', 'username', 'email', 'password', 'password2'];
 
 function getIds(arr) {
@@ -58,7 +54,7 @@ function checkLength(input, min, max) {
     } else if (fieldLength > max) {
         showError(input, lessThanCharMsg(input, max));
     } else {
-        showError(input);
+        showSuccess(input);
     }
 }
 
