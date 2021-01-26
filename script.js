@@ -52,7 +52,7 @@ function checkLength(input, min, max) {
     } else if (fieldLength > max) {
         showError(input, lessThanCharMsg(input, max));
     } else {
-        showError(input);
+        showSuccess(input);
     }
 }
 
