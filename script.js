@@ -1,4 +1,5 @@
 document.onload = () => {
+
     const {
         form,
         username,
@@ -6,6 +7,11 @@ document.onload = () => {
         password,
         password2
     } = getIds(ids);
+    loadSvgs();
+}
+
+document.onload = () => {
+    document.getElementsByClassName
 }
 
 const ids = ['form', 'username', 'email', 'password', 'password2'];
@@ -76,6 +82,11 @@ function checkPasswordsMatch(pswrd1, pswrd2) {
     if (pswrd1.value !== pswrd2.value) {
         showError(pswrd2, 'Passwords do not match');
     }
+}
+
+function loadSvgs() {
+    console.log(`~THIS: `);
+    console.log(`~THIS: `, this);
 }
 
 form.addEventListener('submit', (e) => {
